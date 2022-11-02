@@ -1,0 +1,29 @@
+Find the SquareOfTheNumber without using standard functions, loops and multipilcation operartor.
+import java.util.Scanner;
+
+public class SquareTheNumber {
+	static int temporary = 0;
+	static int square =0;
+	
+	public static int findSquareOfTheNumber(int userInput) {
+		if(userInput>0) {
+			square = square + temporary;
+			findSquareOfTheNumber(userInput-1);
+		}
+		else {
+			return 0;
+		}
+		return square;
+		}
+	
+	public static void main(String args[]) {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter the input");
+		int userInput = scanner.nextInt();
+		temporary = userInput;
+		findSquareOfTheNumber(userInput);
+		System.out.println(square);
+		
+	}
+	
+}
