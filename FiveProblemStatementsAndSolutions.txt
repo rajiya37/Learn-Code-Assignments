@@ -1,0 +1,200 @@
+Problem Statement #1:
+Given an Array of size Every number repeating twice except one number find out that number?
+import java.util.Scanner;
+
+public class FindSingleAppearanceNumber {
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter the array size");
+		int arraySize = scanner.nextInt();
+		int array[] = new int[arraySize];
+		System.out.println("Enter the array elements");
+		
+		for(int i=0;i<arraySize;i++) {
+			array[i]=scanner.nextInt();
+				}
+		
+		for (int i=0;i<arraySize;i++) {
+			if(array[i]!=-1) {
+				for(int j=i+1;j<arraySize;j++) {
+					if(array[i]==array[j]) {
+						array[j] = -1;
+						array[i] = -1;
+						}
+					}
+				}
+			}
+		
+		for (int i=0;i<arraySize;i++) {
+			if(array[i]!=-1) {
+				System.out.println(array[i]);
+				}
+			}
+		}
+	}
+
+Problem Statement #2:
+Given an Array of size N and a values K, around which we need to right rotate the array?
+import java.util.Scanner;
+
+public class RotateArrayOfElements {
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter the arraySize");
+		int arraySize= scanner.nextInt();
+		int array[] = new int[arraySize];
+		System.out.println("Enter the array elements");
+		for(int i=0;i<arraySize;i++) {
+			array[i]=scanner.nextInt();
+			}
+		int numberOfRotations=3;
+		numberOfRotations=numberOfRotations%arraySize;
+		rightRotation(arraySize, array, numberOfRotations);
+		}
+	
+	public static void rightRotation(int arraySize,int array[], int numberOfRotations) {
+		for(int i=0;i<arraySize;i++) {
+			if(i<numberOfRotations) {
+				int rotatedArray= array[arraySize+i-numberOfRotations];
+				System.out.println(rotatedArray);
+				}
+			else {
+				int rotatedArray = array[i-numberOfRotations];
+				System.out.println(rotatedArray);
+				}
+			}
+		}
+	}
+
+
+
+Problem Statement #3:
+Write a program to print the following pattern:
+
+*   *   *   *   *
+  *   *   *   *
+    *   *   *
+      *   *
+        *
+      *   *
+    *   *   *
+  *   *   *   *
+*   *   *   *   *
+
+import java.util.Scanner;
+
+public class ConstructTriangle {
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("Enter the bumner of rows");
+		int numberOfRows = scanner.nextInt();
+		for (int i = 0 ; i <= numberOfRows - 1; i++ ) {
+			for (int j = 0 ; j < i; j++ ) {
+				System.out.print(" ");
+				}
+			for(int k = i; k <= numberOfRows - 1; k++) {
+				System.out.print("* ");
+				}
+			System.out.println();
+			}
+		
+		for (int i = numberOfRows - 1; i >= 0; i-- ) {
+			for (int j = 0 ; j < i; j++ ) {
+				System.out.print(" ");
+				}
+			for(int k = i; k <= numberOfRows - 1; k++) {
+				System.out.print("* ");
+				}
+			System.out.println();
+			}
+		}
+	}
+	
+	
+
+Problem Statement #4:
+Consider N is number of lines you need to print and construct a triangle
+
+Input: N=5
+
+Output:
+
+	                1  
+	            4   9  16 
+                 25  36  49  64  81 
+            100 121 144 169 196 225 256 
+        289 324 361 400 441 484 529 576 625
+
+import java.util.*;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		int rowSize = scanner.nextInt();
+		int k=1;
+		for (int i=1; i<=rowSize; i++) {
+			for(int j=1; j<=2*rowSize-1; j++) {
+				if(j>= rowSize-(i-1) && j <= rowSize+(i-1)) {
+					System.out.print(" "+(k*k));
+					k++;
+					}
+				else
+					System.out.print(" ");
+				}
+			System.out.println(" ");
+		}	}
+		}
+	
+	
+
+Problem Statement #5:
+There are some groups of devils and they splitted into people to kill them. Devils make People to them left as their group and at last the group with maximum length will be killed. Two types of devils are there namely “@” and “$”
+People is represented as a string “P”.
+
+Constraints:
+2<=Length of string<=10^9
+
+Input string
+PPPPPP@PPP@PP$PP
+
+Output
+7
+
+Explanation
+4 groups can be formed
+
+PPPPPP@
+PPP@
+PP$
+PP
+Most people in the group lie in group 1 with 7 members.
+
+import java.util.*;
+class DevilGroups{
+	public static void main (String[]args) {
+		Scanner scanner = new Scanner (System.in);
+		String  peopleDevilGroup= scanner.next ();
+		peopleDevilGroup = peopleDevilGroup.replace ("@", " ");
+		peopleDevilGroup = peopleDevilGroup.replace ("$", " ");
+		String peoplesGroup[] = peopleDevilGroup.split (" ");
+		for (int i = 0; i < peoplesGroup.length; i++)
+		{
+			System.out.println (peoplesGroup[i]);
+			}
+		String longestGroup = findLongestGroup (peoplesGroup);
+		int maximumNumberOfPeople = longestGroup.length ();
+		System.out.println (maximumNumberOfPeople);
+		}
+	
+	public static String findLongestGroup (String[] peoplesGroup) {
+		int size = peoplesGroup.length;
+		String longestGroup = peoplesGroup[0];
+		for (int i = 1; i < size; i++) {
+			if (peoplesGroup[i].length () > longestGroup.length ()) {
+				longestGroup = peoplesGroup[i];
+				}
+			}
+		return longestGroup;
+		}
+	}
