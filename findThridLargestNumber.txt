@@ -1,0 +1,35 @@
+Problem Statement: Write a function to find the 3rd largest number from a given integer array
+import java.util.Scanner;
+
+public class ThirdLargestNumber {
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter the length of arr");
+		int n = scanner.nextInt();
+		int arr[] = new int[n];
+		System.out.println("Enter the arr elements");
+		
+		for(int i=0;i<n;i++) {
+			arr[i]=scanner.nextInt();
+		}
+		
+		int firstLargestNumber=Integer.MIN_VALUE;
+		int secondLargestNumber=Integer.MIN_VALUE;
+		int thirdLargestNumber=Integer.MIN_VALUE;
+		
+		for(int i=0; i<n; i++) {
+			if(firstLargestNumber<=arr[i]) {
+				thirdLargestNumber=secondLargestNumber;
+				secondLargestNumber=firstLargestNumber;
+				firstLargestNumber = arr[i];
+			}
+		}
+		
+		System.out.print(thirdLargestNumber);
+
+	}
+	
+	
+
+}
